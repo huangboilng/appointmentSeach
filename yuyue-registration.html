@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>预约挂号</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/font-awesome.css" rel="stylesheet" />
+		<link href="css/swiper.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/font-awesome.css" />	
+		<link href="css/scrollbar.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/kendo.mobile.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/iscroll.js"></script>
+		<script src="js/bootstrap.min.js"></script>	
+		<script src="js/bootstrap3-typeahead.min.js"></script>
+		<script src="js/underscore.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312"><style type="text/css">
+<!--
+body,td,th {
+	font-size: 0px;
+}
+-->
+</style></head>
+
+	<body>				  
+		<div data-role="view" id="orderpay" data-use-native-scrolling="true">
+		     <div data-role="header">
+				<div data-role="navbar">
+					<div class="view-title-group btn-bgcolor-blue col-xs-12">
+						<span class="col-xs-6 view-title-left">科室选择<i class="fa fa-angle-down arrows-division"></i></span>
+						<span class="col-xs-1 hrborder"></span>
+						<span class="col-xs-5 view-title-right"><b class="glyphicon glyphicon-search name-search"></b>姓名查找</span>
+					</div>
+				</div>
+				<div class="swiper-container"><div class="swiper-wrapper"></div></div>
+					
+				<div class="showhide-navbox" id="division-hidebox">
+					<div class="searchbox">
+						<div class="input-group">
+							  <span class="input-group-btn">
+								<button class="btn btn-default" type="button" disabled="disabled">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							  </span>
+							  <input type="text" class="form-control" placeholder="請輸入科室名" id="kssearchinput">
+						</div>
+					</div>
+					<div class="wrapperksbox">
+						<div id="wrapperks" class="boxradius yykslistbox"> 
+							<ul id="ksthelist">
+								<li>儿童保健</li>
+								<li>耳鼻咽喉科</li>
+								<li>风湿免疫</li>
+								<li>骨科</li>
+								<li>呼吸</li>
+								<li>康复中心</li>
+								<li>口腔科</li>
+								<li>泌尿</li>
+								<li>内分泌</li>
+								<li>内科</li>
+							</ul>
+							<ul id="ksthelist-clone"></ul>
+						</div>	
+					</div>	
+			   </div>
+				  
+			   <div class="showhide-navbox" id="name-search-hidebox">
+					<div class="searchbox btn-bgcolor-blue">
+						<div class="input-group col-xs-6">
+							  <span class="input-group-btn">
+								<button class="btn btn-default" type="button" disabled="disabled">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							  </span>
+							  <input type="text" class="form-control" placeholder="請輸入医生名" id="searchinput">
+						</div>
+						<span class="name-search-cancel" id="name-search-cancel">取消</span>
+					</div>
+					<div class="wrapperysbox"> 
+						<div class="boxradius yykslistbox" id="wrapperys"> 
+							<ul id="ysthelist">
+								<li>蔡兰云</li><li>常建洛</li><li>陈丽萍</li>
+								<li>陈强</li><li>陈霞</li><li>陈勇</li><li>陈月</li><li>邓庆强</li><li>段君凯</li><li>段炤</li><li>段智峰</li><li>冯亮</li><li>傅睿</li>
+								<li>郭兰芳</li><li>何飞</li><li>胡宝金</li><li>胡淑珍</li><li>胡逸鹏</li><li>华学明</li><li>黄金狮</li><li>黄敏</li><li>黄雄七</li><li>黄玉辉</li>
+								<li>霍晓春</li><li>江英</li><li>李翠昌</li><li>李建</li><li>李建华</li><li>李岚</li><li>李荣珍</li><li>李守明</li><li>李维君</li><li>李艳艳</li>
+								<li>连惠红</li><li>梁昌达</li><li>林敏</li><li>林珊</li><li>刘洪</li><li>刘建梅</li><li>刘茂兰</li><li>刘美华</li><li>刘小惠</li><li>卢宏昌</li>
+								<li>卢文青</li><li>罗蓉</li><li>苗静</li><li>牛丽文</li><li>彭晓卫</li><li>饶品德</li><li>饶小平</li><li>万宏</li><li>万盛华</li><li>王爱红</li>
+								<li>王保利</li><li>文文兵</li><li>吴爱民</li><li>吴华平</li><li>吴晖</li><li>吴浪龙</li><li>吴卫萍</li><li>吴文波</li><li>吴限</li><li>吴晓慧</li>
+								<li>吴欣乐</li><li>伍俐亭</li><li>谢丹丹</li><li>谢理玲</li><li>谢腾芳</li><li>邢雅汶</li><li>熊斌</li><li>徐本源</li><li>徐南平</li>
+								<li>徐淑娟</li>
+								<li>徐维</li><li>徐忠金</li><li>许恩超</li><li>许飞</li><li>许增华</li><li>严健</li><li>晏长红</li><li>杨利</li><li>杨明</li><li>杨玉</li>
+								<li>杨云飞</li><li>叶钟陵</li><li>易申德</li><li>袁华</li><li>张琛玮</li><li>张丽昌</li><li>张双红</li><li>章高平</li><li>郑卫民</li>
+								<li>钟建民</li><li>钟霞</li><li>钟小红</li><li>钟云莺</li><li>周末芝</li><li>朱晓华</li><li>朱友荣</li><li>宗洪波</li><li>邹海英</li>
+								<li>邹时朴</li><li>邹勇</li><li>邹峥</li>
+							</ul>
+						</div>	
+					</div>	
+			    </div>
+				 
+			 </div>  
+				
+			 <div class="container yuyueregist-libox">
+			     <div id="wrapper">
+					<div id="scroller" class="boxradius yuyuelistbox">
+						<div id="pullDown"><span class="pullDownLabel"></span></div>
+						<ul id="doctorks-isroll-list">
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-blue" data-target="#myModal-yuyue" data-toggle="modal">有号</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-darkgray">约满</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-blue" data-target="#myModal-yuyue" data-toggle="modal">有号</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-darkgray">约满</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-blue" data-target="#myModal-yuyue" data-toggle="modal">有号</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-darkgray">约满</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-blue" data-target="#myModal-yuyue" data-toggle="modal">有号</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-darkgray">约满</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-blue" data-target="#myModal-yuyue" data-toggle="modal">有号</button>
+								</span>
+							</li>
+							<li>
+								<span class="col-xs-3 boxradius-spanleft">
+									<img src="images/doctoricon.png"/>
+								</span>
+								<span class="col-xs-7 boxradius-spanright">
+									<h5 class="schedulelistdoctor">张大 <b class="schedulelistbzrys"> 主任医师</b></h5>
+									<h5>消化内科</h5>
+								</span>
+								<span class="col-xs-2 boxradius-btnbox">
+									<button type="button" class="btn btn-default btn-bgcolor-darkgray">约满</button>
+								</span>
+							</li>
+						</ul>
+						<ul id="doctorks-isroll-list-clone"></ul>
+						<div id="pullUp">
+							<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+						</div>
+					</div>	
+				</div>	
+            </div>
+			<div data-role="footer"></div>  
+		</div> 
+		
+<div class="modal fade" id="myModal-yuyue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="time-yuyue-dialog modal-content" id="time-yuyue-dialog">
+            <div id="modal-isroll">
+                <div class="time-yuyue-dialog-title">
+                    <h5 class="fontbule-style">上午</h5>
+                    <h5 class="time-yuyue-dialog-title-msg">普通门诊：7元</h5>
+                </div>
+                <ul class="time-yuyue-dialog-ulbox">
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">08:00-09:00</h5>
+                        <h5 class="col-xs-4">剩余:60个号</h5>
+                        <button class="btn btn-default btn-bgcolor-blue col-xs-2">预约</button>                        
+                    </li>
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">09:00-10:00</h5>
+                        <h5 class="col-xs-4">剩余:0个号</h5>
+                        <button class="btn btn-default btn-bgcolor-darkgray col-xs-2" disabled="disabled">约满</button>
+                    </li>
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">10:00-11:00</h5>
+                        <h5 class="col-xs-4">剩余:08个号</h5>
+                        <button class="btn btn-default btn-bgcolor-blue col-xs-2">预约</button>  
+                    </li>
+                </ul>
+				<div class="time-yuyue-dialog-title">
+                    <h5 class="fontbule-style">上午</h5>
+                    <h5 class="time-yuyue-dialog-title-msg">普通门诊：7元</h5>
+                </div>
+                <ul class="time-yuyue-dialog-ulbox">
+                    <li class="col-xs-12">
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">08:00-09:00</h5>
+                        <h5 class="col-xs-4">剩余:60个号</h5>
+                        <button class="btn btn-default btn-bgcolor-blue col-xs-2">预约</button>
+                    </li>
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">09:00-10:00</h5>
+                        <h5 class="col-xs-4">剩余:0个号</h5>
+                        <button class="btn btn-default btn-bgcolor-darkgray col-xs-2" disabled="disabled">约满</button>
+                    </li>
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">10:00-11:00</h5>
+                        <h5 class="col-xs-4">剩余:08个号</h5>
+                        <button class="btn btn-default btn-bgcolor-blue col-xs-2">预约</button>
+                    </li>
+                </ul>
+				<div class="time-yuyue-dialog-title">
+                    <h5 class="fontbule-style">上午</h5>
+                    <h5 class="time-yuyue-dialog-title-msg">普通门诊：7元</h5>
+                </div>
+                <ul class="time-yuyue-dialog-ulbox">
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">08:00-09:00</h5>
+                        <h5 class="col-xs-4">剩余:60个号</h5>
+                        <button class="btn btn-default btn-bgcolor-blue col-xs-2">预约</button>
+                    </li>
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">09:00-10:00</h5>
+                        <h5 class="col-xs-4">剩余:0个号</h5>
+                        <button class="btn btn-default btn-bgcolor-darkgray col-xs-2" disabled="disabled">约满</button>
+                    </li>
+                    <li>
+                        <b class="glyphicon glyphicon-time col-xs-1"></b>
+                        <h5 class="col-xs-4">10:00-11:00</h5>
+                        <h5 class="col-xs-4">剩余:08个号</h5>
+                        <button class="btn btn-default btn-bgcolor-blue col-xs-2">预约</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="showhide-opacity" style="display:none;width: 100%;height: 100%;  opacity: .5;z-index: 0;  position: absolute; top: 0; right: 0;left: 0;background-color: #000;"></div>
+
+
+<!--
+
+isroll插件就是个坑，因为isroll插件中有e.preventdefault()阻止默认动作，导致科室选择和姓名查找的列表还有bootstrap写的modal模态框也要加isroll，
+	按照常理这种不用下拉刷新的list手机是默认可以触摸下滑的，但是由于isroll插件中的默认阻止e.preventdefault()动作，导致整个项目的下拉都要用isroll！！！
+
+
+http://blog.nnnv.cn/index.php/archives/65  好资料，更新于20160216
+
+-->
+
+<!--
+总结：
+
+本项目难点：由于当时对isroll插件和kendoui不熟悉，
+
+第一：所以当点击日期切换数据的时候，如果前一次的数据已经被拉到最底部，
+	  那么后一次更新的数据的isroll位置还是会在前一次被拉到的位置(这是由于kendoui的原因，kendoui的content回忆自动生成自己的isroll，
+	  在view处加上 data-use-native-scrolling="true"属性就会去掉kendoui自身的isroll)。
+
+第二：去掉kendoui自身的isroll之后我自己加的isroll插件拉不动，还有有时候也会有第一条问题，
+	解决在自身写的isroll第一个相同问题的办法：在实例化isroll的时候加上checkDOMChanges: true属性，此属性代表的是当数据刷新的时候，isroll会检测数据是否刷新。
+	解决拉不动的办法：在数据list切换完之后加上myScroll.refresh(); myScroll.scrollTo(0, 0, 100);  
+	还有就是一定在要数据加载完之后再实例化isroll，详见科室选择和姓名选择实例化isroll的位置，是放在数据显示之后再实例化！
+	还要注意isroll最外层的wrapper样式，详见css文件中wrapper的css样式！
+	
+第三：再写科室选择和姓名选择的下拉isroll时，由于这2个不是下拉刷新，而是手机触屏下滑，所以在写css样式的时候需要使isroll的入口节点的高度少于适配器的高度，
+      详见#wrapperys,#wrapperks设置的高度。
+	  http://cubiq.org/dropbox/iphonescroll.html这个链接是网上的demo
+
+-->
+
+
+
+<script>
+/***-----------------modal点击显示，并且isroll-----------------------***/
+$('#myModal-yuyue').on('shown.bs.modal', function (e) {
+	var myModalyuyue;
+	function myModalyuyue() {
+		myModalyuyue = new iScroll('myModal-yuyue');
+	}
+	myModalyuyue();
+
+});
+
+</script>
+
+<script>
+
+/***---点击日历切换数据(为假数据，看到日历切换，更新数据，并且isroll)------***/
+$(function(){
+	$("#doctorks-isroll-list").clone().append("#doctorks-isroll-list-clone");
+});
+/***---------------------日历Begin-----------------------***/
+var huanglingdate = new Date(); 
+var Daytotal = 31; //滑动的天数
+var ymd,datehuangie,weekday, yearie, monthie, dayie;
+for (var i = 1; i < Daytotal; ++i) {
+	  ymd = GetDateStr(i);
+	  datehuangie = NewDate(ymd[0]);
+	  weekday = "日一二三四五六".split("")[new Date(datehuangie.getFullYear(), datehuangie.getMonth(), datehuangie.getDate()).getDay()];
+	  yearie = datehuangie.getFullYear(); 
+	  monthie = datehuangie.getMonth()+1;
+	  dayie = datehuangie.getDate(); 
+	  if (i == 1) {
+		  $(".swiper-wrapper").append("<div name=\"mydate\" class=\"swiper-slide active\" data=" + yearie + "-" + monthie + "-" + dayie + "><div class=\"triangle-right\"><b class=\"glyphicon glyphicon-ok\"></b></div><h6>" + weekday + "</h6><h4>" + (monthie + "/" + dayie) + "</h4></div>");
+
+	  } else {
+		  $(".swiper-wrapper").append("<div name=\"mydate\" class=\"swiper-slide\"  data=" + yearie + "-" + monthie + "-" + dayie + "><h6>" + weekday + "</h6><h4>" + (monthie + "/" + dayie) + "</h4></div>");
+	  }
+}
+
+//日历兼容IE，IE下日期udenfina
+function NewDate(str)
+{
+	var date=new Date();
+	date.setUTCFullYear(str[0], str[1]-1, str[2]);
+	date.setUTCHours(0, 0, 0, 0);
+	return date;
+}
+function GetDateStr(AddDayCount) {
+	var huanglingdate = new Date();
+	huanglingdate.setDate(huanglingdate.getDate()+AddDayCount);
+	var year = parseInt(huanglingdate.getFullYear());
+	var month = parseInt(huanglingdate.getMonth()+1);
+	var nowDate = parseInt(huanglingdate.getDate());
+	var dayhling = new Array([ year, month, nowDate]); 
+    return dayhling;
+}
+/***---------------------日历END-------------***/
+
+/***---------------日历左右滑动-------------***/
+var swiper = new Swiper('.swiper-container', {
+	slidesPerView: 7,
+	paginationClickable: true,
+	spaceBetween: 0,
+	freeMode: true
+});	
+
+/***--------点击日历更换并且刷新isroll的div数据，使isroll重回top----------------***/
+$(".swiper-slide").on("click", function(e){
+	$(this).addClass("active");
+	$(this).prepend("<div class=\"triangle-right\"><b class=\"glyphicon glyphicon-ok\"></b></div>");
+	$(this).siblings(".swiper-slide").removeClass("active");
+	$("#doctorks-isroll-list li").clone().appendTo("#doctorks-isroll-list-clone");
+	$("#doctorks-isroll-list").empty();
+	$("#doctorks-isroll-list-clone li").clone().appendTo("#doctorks-isroll-list");
+	//重置并且刷新doctorks-isroll-list列表的top值，让list回到顶部。需要结合isroll2中的checkDOMChanges: true参数！
+	myScroll.refresh();
+    myScroll.scrollTo(0, 0, 100);
+});
+	
+</script>
+<script>
+/***---------------------科室选择显示隐藏-----------------------***/
+$(".view-title-left").click(function(){
+	$("#name-search-hidebox").hide();
+	if($(this).find(".arrows-division").hasClass("fa-angle-down")){
+		$(this).find(".arrows-division").removeClass("fa-angle-down").addClass("fa-angle-up");
+	}else{
+		$(this).find(".arrows-division").removeClass("fa-angle-up").addClass("fa-angle-down");
+	}
+	
+	$("#division-hidebox").animate({
+	   height: 'toggle', opacity: 'toggle'
+	}, 300);
+	
+	var wrapperks;
+	function wrapperks() {
+		wrapperks = new iScroll('wrapperks'); //alert($("#wrapperks").css("height"));
+	}
+	wrapperks();
+			  
+	return false;
+});	
+/***---------------------姓名查找显示隐藏-----------------------***/
+$(".view-title-right, #name-search-cancel").click(function(){
+	$("#division-hidebox").hide();
+	
+	$("#name-search-hidebox").animate({
+	   height: 'toggle', opacity: 'toggle'
+	}, 300);  
+	
+	/*setTimeout(function () {	
+		if($("#name-search-hidebox").css("display") == "none"){
+			$(".showhide-opacity").css("display","none");
+		}else{
+			$(".showhide-opacity").css("display","block");
+		}
+	}, 301);*/
+	
+	var wrapperys;
+	function wrapperys() {
+		wrapperys = new iScroll('wrapperys');
+	}
+	wrapperys();
+			
+	return false;
+});	
+
+/*var divClicked = false;
+document.onclick = function() {
+   if(!divClicked) {
+		if($("#division-hidebox").css("display") == "block"){
+			if($(".view-title-left").find(".arrows-division").hasClass("fa-angle-down")){
+				$(".view-title-left").find(".arrows-division").removeClass("fa-angle-down").addClass("fa-angle-up");
+			}else{
+				$(".view-title-left").find(".arrows-division").removeClass("fa-angle-up").addClass("fa-angle-down");
+			}
+		}
+		$("#division-hidebox").animate({
+		   opacity: 'hide'
+		}, 300);
+   }
+   divClicked = false;
+};	*/
+
+	
+</script>
+
+
+<script>  
+new kendo.mobile.Application(document.body, {
+	skin: "flat-skin",
+});  
+</script> 
+
+<script>
+
+/***-------------------搜索显示下拉框智能选择-------------------***/
+$(document).ready(function ($) {
+
+	$.fn.typeahead.Constructor.prototype.blur = function () {
+		var that = this;
+		setTimeout(function () { that.hide() }, 250);
+	};
+
+	var products = ["心脑血管科", "消化外科", "外科", "内科", "妇科", "泌尿科", "肝", "消化内科", "心脏科"];
+
+	var that = this;
+	var itemarr = new Array();
+	$('#kssearchinput').typeahead({
+		source: function (query, process) {
+			var results = _.map(products, function (product) { 
+				itemarr.length = 0;
+				return product;
+			});
+			$("#ksthelist li").clone().appendTo("#ksthelist-clone");
+			process(results);
+		},
+		/*matcher: function (item) {
+			return true;
+		},*/
+		highlighter: function (item) {
+			var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
+			
+			return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+				
+				itemarr.push(item);
+				that.setSelectedProduct(itemarr);
+				return '<strong>' + match + '</strong>'
+			})
+		}
+	});
+
+	this.setSelectedProduct = function (item) {
+		if(item != ""){
+			 $('#ksthelist').empty();
+			 $.unique(itemarr);//console.log(itemarr);
+			
+			 $.each(itemarr, function(i,val){      
+				  $('#ksthelist').append("<li>" + val + "</li>");
+			  });
+			
+		}
+	}
+	
+	$("#kssearchinput").change(function() {
+		var current = $("#kssearchinput").typeahead("getActive");
+		if (current) {
+			if(current != $("#kssearchinput").val() && $("#kssearchinput").val() == ''){
+			    $("#ksthelist").empty();
+				$("#ksthelist-clone li").clone().appendTo("#ksthelist");
+			}
+		}
+	});
+
+})
+</script>
+<script src="js/iscroll2.js"></script>	
+		
+	</body>
+</html>	
